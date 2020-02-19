@@ -77,28 +77,16 @@ public class ExercisesInTime {
                 ++fridayThirteenCounter;
             }
         }
-        System.out.println("~~~F13~~~\nThere has been " + fridayThirteenCounter+" Friday-The-Thirteenths since 1900-01-01.");
+        System.out.println("~~~F13~~~\nThere has been " + fridayThirteenCounter + " Friday-The-Thirteenths since 1900-01-01.");
         System.out.printf("There has been an average of %.3f Friday-The-Thirteenths per year.%n%n", ((double) fridayThirteenCounter / (LocalDate.now().getYear() - 1900)));
     }
 
 
     void timeAcrossThePond() {
-        /*
-        Låtsas vara en New Yorkare och skriv därmed in en Date + Time i April du skall på Skype-möte (tips: AM/PM),
-        konvertera och printa denna tid till Svenskt format för att se till att kollegan i Sverige dyker upp samtidigt.
-         */
-        LocalDateTime yank = LocalDateTime.of(2020,Month.APRIL,1,11,30);
-        ZonedDateTime y = ZonedDateTime.of(yank,ZoneId.of("America/New_York"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(
-                new Locale("en", "US"));
-        System.out.println("So, yank says let's chat at "+formatter.format(y));
-        System.out.println("And I'm like that's "+y.getZone()+",right?");
-
-        ZonedDateTime yankee = LocalDateTime.now().atZone(ZoneId.of("America/New_York"));
-        System.out.println("yankee = " + yankee);
-        //ZonedDateTime swee = yankee.atZone(ZoneId.of("America/New_York"));
-        // System.out.println("swee = " + swee);
-
+        LocalDateTime yank = LocalDateTime.of(2020, Month.APRIL, 1, 11, 30);
+        ZonedDateTime y = ZonedDateTime.of(yank, ZoneId.of("America/New_York"));
+        System.out.println("So, I says like let's chat at " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(new Locale("en", "US")).format(y));
+        System.out.println("And they're like aight, see you at " + y.withZoneSameInstant(ZoneId.of("Europe/Stockholm")).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)));
     }
 
 
