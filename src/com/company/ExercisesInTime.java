@@ -8,11 +8,11 @@ import java.util.Locale;
 public class ExercisesInTime {
     ExercisesInTime() {
 
-        //daysSinceBirth();
+        daysSinceBirth();
         timeAcrossThePond();
-        //fridayAndThirteen();
-        //shittyPhone();
-        //eatSleepDie();
+        fridayAndThirteen();
+        shittyPhone();
+        eatSleepDie();
 
     }
 
@@ -53,8 +53,8 @@ public class ExercisesInTime {
             timeSpent += dailyTimeSpent;
         }
 
-        System.out.printf("%n%n~~~EAT SLEEP DIE~~~ %nTime spent at school/work/sleeping/shitting/cleaning/scrolling: %.0f%n%nAverage percentage of time alive not spent at school/work/sleeping/shitting/cleaning/scrolling: " +
-                "%.1f%%%nAverage amount of hours alive not spent at school/work/sleeping/shitting/cleaning/scrolling: %.0f hours.%nHours of leisure left for me if i live to age 80: %d hours.%n%n", (double) (timeSpent) / 60, 100 - ((double) timeSpent / (double) timeElapsed) * 100, (double) (timeElapsed - timeSpent) / 60, timeLeftForMe / 60);
+        System.out.printf("%n%n~~~EAT SLEEP DIE~~~ %nAverage percentage of time alive not spent at school/work/sleeping/shitting/cleaning/scrolling: " +
+                "%.1f%%%nAverage amount of hours alive not spent at school/work/sleeping/shitting/cleaning/scrolling: %.0f hours.%nHours of leisure left for me if i live to age 80: %d hours.%n%n", 100 - ((double) timeSpent / (double) timeElapsed) * 100, (double) (timeElapsed - timeSpent) / 60, timeLeftForMe / 60);
     }
 
     void shittyPhone() {
@@ -77,16 +77,15 @@ public class ExercisesInTime {
                 ++fridayThirteenCounter;
             }
         }
-        System.out.println("~~~F13~~~\nThere has been " + fridayThirteenCounter + " Friday-The-Thirteenths since 1900-01-01.");
+        System.out.println("\n~~~F13~~~\nThere has been " + fridayThirteenCounter + " Friday-The-Thirteenths since 1900-01-01.");
         System.out.printf("There has been an average of %.3f Friday-The-Thirteenths per year.%n%n", ((double) fridayThirteenCounter / (LocalDate.now().getYear() - 1900)));
     }
 
 
     void timeAcrossThePond() {
-        LocalDateTime yank = LocalDateTime.of(2020, Month.APRIL, 1, 11, 30);
-        ZonedDateTime y = ZonedDateTime.of(yank, ZoneId.of("America/New_York"));
-        System.out.println("So, I says like let's chat at " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(new Locale("en", "US")).format(y));
-        System.out.println("And they're like aight, see you at " + y.withZoneSameInstant(ZoneId.of("Europe/Stockholm")).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)));
+        ZonedDateTime yank = ZonedDateTime.of(LocalDateTime.of(2020, Month.APRIL, 1, 11, 30), ZoneId.of("America/New_York"));
+        System.out.println("~~~YANK~~~\nSo, I says like let's chat at " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(new Locale("en", "US")).format(yank));
+        System.out.println("And they're like aight, see you at " + yank.withZoneSameInstant(ZoneId.of("Europe/Stockholm")).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)));
     }
 
 
